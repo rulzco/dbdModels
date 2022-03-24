@@ -1,5 +1,5 @@
 # dbdModels
- Miscellaneous DBD models implemted in OpenFOAM
+ Miscellaneous DBD atcuator models implemented in OpenFOAM
  
  ## Shyy model
  
