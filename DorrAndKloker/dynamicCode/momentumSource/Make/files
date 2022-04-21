@@ -1,0 +1,6 @@
+/* dynamicCode:
+ * SHA1 = d74c4e5e5c1f24eb9d4eb164ed020ba975892247
+ */
+codedFvOptionTemplate.C
+
+LIB = $(PWD)/../platforms/$(WM_OPTIONS)/lib/libmomentumSource_d74c4e5e5c1f24eb9d4eb164ed020ba975892247

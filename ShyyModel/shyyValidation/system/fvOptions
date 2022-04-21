@@ -1,0 +1,255 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  5                                     |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      fvOptions;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+momentumSource
+{
+    type            vectorCodedSource;
+    active         true; // true;
+    fields   (U) ;
+    //selectionMode   cellSet;
+    selectionMode   all;
+    //cellSet         plasma;
+    name            momentumSource;
+
+    codeInclude
+    #{
+
+    #};
+    
+    codeCorrect
+    #{
+        //Pout<< "**codeCorrect**" << endl;
+    #};
+
+    codeAddSup
+    #{
+        
+        //const Time& time = mesh().time();
+        const scalarField& V = mesh_.V();
+        const vectorField& cells = mesh_.C();
+        vectorField& uSource = eqn.source();
+        //const scalarField& x = mesh_.C().component(0);
+        //const scalarField& y = mesh_.C().component(1);
+        
+        const scalar omega = 3e3; // Hz
+        const scalar rhoC = 1e17; // e/cm^3 1e17 1/m^3
+        const scalar Va = 4e3; // kV RMS | 4kV Shyy et al. , 3.3 kV Degiorgi et al. 6kv Matches Shyy
+        //float V0 = 10e3;
+        float V0 = Va * sqrt(2.0);
+        const scalar Eb = 30e5; // 30 kV/cm
+        const scalar deltaT = 67e-6; // s
+        const scalar ec = 1.602e-19; //C
+        const scalar a = 0.0015; // 0.0015 m
+        const scalar b = 0.003; // 0.01 m
+        const scalar d = 2.5e-4; // 0.00025 m
+        //const scalar Te = 1.1e-4; //
+
+        //float E0 = V0 / sqrt(pow(Te,2)+pow(d,2)); //Modified as Palmeiro for gap=0
+        float E0 = V0 / d;
+        float k1 = (E0 - Eb ) / b;
+        float k2 = (E0 - Eb ) / a;
+        
+        //cellSet selectedCells (mesh_, cellSetName_);
+        //labelList cells = selectedCells.toc ();
+        
+        DimensionedField <scalar, volMesh> Efield
+        (
+            IOobject
+            (
+                "Efield",
+                mesh_.time().timeName(),
+                mesh_,
+                IOobject::NO_READ,
+                IOobject::AUTO_WRITE
+            ),
+            mesh_,
+            dimensioned <scalar>
+            (
+                "zero",
+                dimensionSet(1, 1, -3, 0, 0, -1, 0), //[kg m s K mol A cd]
+                pTraits <scalar> :: zero
+            )
+        );
+          
+        DimensionedField <scalar, volMesh> Ex
+        (
+            IOobject
+            (
+                "Ex",
+                mesh_.time().timeName(),
+                mesh_,
+                IOobject :: NO_READ,
+                IOobject :: AUTO_WRITE
+            ),
+            mesh_,
+            dimensioned <scalar>
+            (
+                "zero",
+                dimensionSet(1, 1, -3, 0, 0, -1, 0), //[kg m s K mol A cd]
+                pTraits <scalar> :: zero
+            )
+        );
+        
+        DimensionedField <scalar, volMesh> Ey
+        (
+            IOobject
+            (
+                "Ey",
+                mesh_.time().timeName(),
+                mesh_,
+                IOobject :: NO_READ,
+                IOobject :: AUTO_WRITE
+            ),
+            mesh_,
+            dimensioned <scalar>
+            (
+                "zero",
+                dimensionSet(1, 1, -3, 0, 0, -1, 0), //[kg m s K mol A cd]
+                pTraits <scalar> :: zero
+            )
+        );
+          
+        DimensionedField <scalar, volMesh> Force
+        (
+            IOobject
+            (
+                "Force",
+                mesh_.time().timeName(),
+                mesh_,
+                IOobject :: NO_READ,
+                IOobject :: AUTO_WRITE
+            ),
+            mesh_,
+            dimensioned <scalar>
+            (
+                 "0",
+                dimAcceleration,
+                pTraits <scalar> :: zero
+            )
+        );
+        
+        DimensionedField <scalar, volMesh> Fx
+        (
+            IOobject
+            (
+                "Fx",
+                mesh_.time().timeName(),
+                mesh_,
+                IOobject :: NO_READ,
+                IOobject :: AUTO_WRITE
+            ),
+            mesh_,
+            dimensioned <scalar>
+            (
+                 "0",
+                dimAcceleration,
+                pTraits <scalar> :: zero
+            )
+        );
+        
+        
+                DimensionedField <scalar, volMesh> Fy
+        (
+            IOobject
+            (
+                "Fy",
+                mesh_.time().timeName(),
+                mesh_,
+                IOobject :: NO_READ,
+                IOobject :: AUTO_WRITE
+            ),
+            mesh_,
+            dimensioned <scalar>
+            (
+                 "0",
+                dimAcceleration,
+                pTraits <scalar> :: zero
+            )
+        );
+        
+        
+        if(mesh().time().value()>0)
+        {
+            forAll(cells, i)
+            {
+                const scalar x = cells[i][0];
+                const scalar y = cells[i][1];
+                if( x > 0 && x < b && y < a)
+                {
+                    Efield[i] = E0 - k1 * x - k2 * y;
+                    
+                    if(Efield[i] < 0)
+                    {
+                        Efield[i] = 0;
+                    }
+                    Ex[i] = Efield[i] * k2 / sqrt(pow(k1,2) + pow(k2,2));
+                    Ey[i] = Efield[i] * k1 / sqrt(pow(k1,2) + pow(k2,2));
+                    Force[i] = Efield[i] * ec * rhoC * omega * deltaT;
+                    Fx[i] = Ex[i] * ec * rhoC * omega * deltaT;
+                    Fy[i] = Ey[i] * ec * rhoC * omega * deltaT;
+                    
+                    //scalar Ex = Efield[i] * k2 / sqrt(pow(k1,2) + pow(k2,2));
+                    //scalar Ey = Efield[i] * k1 / sqrt(pow(k1,2) + pow(k2,2));
+                    
+                    uSource[i][0] -= Ex[i] * ec * rhoC * omega * deltaT * V[i];
+                    uSource[i][1] -= Ey[i] * ec * rhoC * omega * deltaT * V[i];
+                }
+                else
+                {
+                    Efield[i] = 0;
+                    Ex[i] = 0;
+                    Ey[i] = 0;
+                    Force[i] = 0;
+                } 
+            }
+            
+        }
+        
+        if(mesh_.time().writeTime())
+        {
+            float bFx = ec * rhoC * omega * deltaT * k2 / sqrt(pow(k1,2) + pow(k2,2));
+            float bFy = ec * rhoC * omega * deltaT * k1 / sqrt(pow(k1,2) + pow(k2,2));
+            Efield.write();
+            Ex.write();
+            Ey.write();
+            Fx.write();
+            Fy.write();
+            Force.write();
+            Info << "k1 = " << k1 << endl;
+            Info << "k2 = " << k2 << endl;
+            Info << "Fx = " << bFx << endl;
+            Info << "Fy = " << bFy << endl;
+        }
+
+    #};
+   
+    codeSetValue
+    #{
+        //Pout<< "**codeSetValue**" << endl;
+    #};
+        
+    // Dummy entry
+    code
+    #{
+        $codeInclude
+        $codeCorrect
+        $codeAddSup
+        $codeSetValue
+    #}; 
+
+}
+
+// ************************************************************************* //

@@ -1,0 +1,132 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  5                                     |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      fvOptions;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+momentumSource
+{
+    type            vectorCodedSource;
+    active         true; // true;
+    fields   (U) ;
+    //selectionMode   cellSet;
+    selectionMode   all;
+    //cellSet         plasma;
+    name            momentumSource;
+
+    codeInclude
+    #{
+
+    #};
+    
+    codeCorrect
+    #{
+        //Pout<< "**codeCorrect**" << endl;
+    #};
+
+    codeAddSup
+    #{
+        
+        //const Time& time = mesh().time();
+        const scalarField& V = mesh_.V();
+        const vectorField& cells = mesh_.C();
+        vectorField& uSource = eqn.source();
+        //const scalarField& x = mesh_.C().component(0);
+        //const scalarField& y = mesh_.C().component(1);
+        
+		//x_pa = 0.0
+		float a0 = 55;
+		float a1 = 8;
+		float a2 = 10; 
+		float b0 = 34;
+		float b1 = 2.7;
+		float b2 = 0.7;
+		float cx = 80;
+		
+		const scalar xmin = 0;
+		const scalar xmax = 0.1;
+		const scalar ymax = 0.1;
+		float rho0 = 1.225;
+		float u0 = 34.922;
+		float L = 0.04;
+		float magF = pow(u0,2)*rho0/L;
+        
+        //cellSet selectedCells (mesh_, cellSetName_);
+        //labelList cells = selectedCells.toc ();
+                    
+        DimensionedField <scalar, volMesh> bForce
+        (
+            IOobject
+            (
+                "bForce",
+                mesh_.time().timeName(),
+                mesh_,
+                IOobject :: NO_READ,
+                IOobject :: AUTO_WRITE
+            ),
+            mesh_,
+            dimensioned <scalar>
+            (
+                 "0",
+                dimAcceleration,
+                pTraits <scalar> :: zero
+            )
+        );
+        
+        
+        if(mesh().time().value()>0)
+        {
+            forAll(cells, i)
+            {
+                const scalar x = cells[i][0];
+                const scalar y = cells[i][1];
+                if( x > xmin && x < xmax && y < ymax)
+                {
+
+					bForce[i] = cx *(a0*a1*x + pow(a0,2)*a2*pow(x,2)) * exp(-a0*x)*
+					(b1*y + b2*pow(y,2)) * exp(-b0*pow(y,0.4))*magF;
+
+                    uSource[i][0] -= bForce[i] *V[i];
+                    //uSource[i][1] -= Ey * ec * rhoC * omega * deltaT * V[i];
+                }
+                else{bForce[i] = 0;}
+            }
+            
+        }
+                
+        
+		if(mesh_.time().writeTime())
+        {
+			bForce.write();
+			Info << "magF = " << magF << endl;
+		}
+		
+    #};
+   
+    codeSetValue
+    #{
+        //Pout<< "**codeSetValue**" << endl;
+    #};
+        
+    // Dummy entry
+    code
+    #{
+        $codeInclude
+        $codeCorrect
+        $codeAddSup
+        $codeSetValue
+    #}; 
+
+}
+
+// ************************************************************************* //

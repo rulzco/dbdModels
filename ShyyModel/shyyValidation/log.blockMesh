@@ -1,0 +1,140 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  8
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 8-1c9b5879390b
+Exec   : blockMesh
+Date   : Mar 24 2022
+Time   : 14:45:11
+Host   : "LAPTOP-SOEGUO28"
+PID    : 8398
+I/O    : uncollated
+Case   : /home/rzco/OpenFOAM/rzco-8/run/shyy/shyyValidation
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Creating block mesh from
+    "system/blockMeshDict"
+Using #calcEntry at line 115 in file "/home/rzco/OpenFOAM/rzco-8/run/shyy/shyyValidation/system/blockMeshDict"
+Using #codeStream with "/home/rzco/OpenFOAM/rzco-8/run/shyy/shyyValidation/dynamicCode/platforms/linux64GccDPInt32Opt/lib/libcodeStream_4e9ba11795d860591482b3752271e41b50205a62.so"
+Creating new library in "dynamicCode/_4e9ba11795d860591482b3752271e41b50205a62/platforms/linux64GccDPInt32Opt/lib/libcodeStream_4e9ba11795d860591482b3752271e41b50205a62.so"
+Invoking "wmake -s libso /home/rzco/OpenFOAM/rzco-8/run/shyy/shyyValidation/dynamicCode/_4e9ba11795d860591482b3752271e41b50205a62"
+wmake libso /home/rzco/OpenFOAM/rzco-8/run/shyy/shyyValidation/dynamicCode/_4e9ba11795d860591482b3752271e41b50205a62
+    ln: ./lnInclude
+    wmkdep: codeStreamTemplate.C
+    Ctoo: codeStreamTemplate.C
+    ld: /home/rzco/OpenFOAM/rzco-8/run/shyy/shyyValidation/dynamicCode/_4e9ba11795d860591482b3752271e41b50205a62/../platforms/linux64GccDPInt32Opt/lib/libcodeStream_4e9ba11795d860591482b3752271e41b50205a62.so
+Using #calcEntry at line 117 in file "/home/rzco/OpenFOAM/rzco-8/run/shyy/shyyValidation/system/blockMeshDict"
+Using #calcEntry at line 126 in file "/home/rzco/OpenFOAM/rzco-8/run/shyy/shyyValidation/system/blockMeshDict"
+Using #calcEntry at line 130 in file "/home/rzco/OpenFOAM/rzco-8/run/shyy/shyyValidation/system/blockMeshDict"
+Using #codeStream with "/home/rzco/OpenFOAM/rzco-8/run/shyy/shyyValidation/dynamicCode/platforms/linux64GccDPInt32Opt/lib/libcodeStream_9d4b7d5343d0ad25eaa64138db8334090d1fc813.so"
+Creating new library in "dynamicCode/_9d4b7d5343d0ad25eaa64138db8334090d1fc813/platforms/linux64GccDPInt32Opt/lib/libcodeStream_9d4b7d5343d0ad25eaa64138db8334090d1fc813.so"
+Invoking "wmake -s libso /home/rzco/OpenFOAM/rzco-8/run/shyy/shyyValidation/dynamicCode/_9d4b7d5343d0ad25eaa64138db8334090d1fc813"
+wmake libso /home/rzco/OpenFOAM/rzco-8/run/shyy/shyyValidation/dynamicCode/_9d4b7d5343d0ad25eaa64138db8334090d1fc813
+    ln: ./lnInclude
+    wmkdep: codeStreamTemplate.C
+    Ctoo: codeStreamTemplate.C
+    ld: /home/rzco/OpenFOAM/rzco-8/run/shyy/shyyValidation/dynamicCode/_9d4b7d5343d0ad25eaa64138db8334090d1fc813/../platforms/linux64GccDPInt32Opt/lib/libcodeStream_9d4b7d5343d0ad25eaa64138db8334090d1fc813.so
+Using #calcEntry at line 131 in file "/home/rzco/OpenFOAM/rzco-8/run/shyy/shyyValidation/system/blockMeshDict"
+Using #calcEntry at line 132 in file "/home/rzco/OpenFOAM/rzco-8/run/shyy/shyyValidation/system/blockMeshDict"
+Using #calcEntry at line 134 in file "/home/rzco/OpenFOAM/rzco-8/run/shyy/shyyValidation/system/blockMeshDict"
+Using #calcEntry at line 136 in file "/home/rzco/OpenFOAM/rzco-8/run/shyy/shyyValidation/system/blockMeshDict"
+Using #calcEntry at line 138 in file "/home/rzco/OpenFOAM/rzco-8/run/shyy/shyyValidation/system/blockMeshDict"
+Using #calcEntry at line 141 in file "/home/rzco/OpenFOAM/rzco-8/run/shyy/shyyValidation/system/blockMeshDict"
+Using #codeStream with "/home/rzco/OpenFOAM/rzco-8/run/shyy/shyyValidation/dynamicCode/platforms/linux64GccDPInt32Opt/lib/libcodeStream_8fa5ed3bb1703b9238567b6ced6fd71a78a1aaf4.so"
+Creating new library in "dynamicCode/_8fa5ed3bb1703b9238567b6ced6fd71a78a1aaf4/platforms/linux64GccDPInt32Opt/lib/libcodeStream_8fa5ed3bb1703b9238567b6ced6fd71a78a1aaf4.so"
+Invoking "wmake -s libso /home/rzco/OpenFOAM/rzco-8/run/shyy/shyyValidation/dynamicCode/_8fa5ed3bb1703b9238567b6ced6fd71a78a1aaf4"
+wmake libso /home/rzco/OpenFOAM/rzco-8/run/shyy/shyyValidation/dynamicCode/_8fa5ed3bb1703b9238567b6ced6fd71a78a1aaf4
+    ln: ./lnInclude
+    wmkdep: codeStreamTemplate.C
+    Ctoo: codeStreamTemplate.C
+    ld: /home/rzco/OpenFOAM/rzco-8/run/shyy/shyyValidation/dynamicCode/_8fa5ed3bb1703b9238567b6ced6fd71a78a1aaf4/../platforms/linux64GccDPInt32Opt/lib/libcodeStream_8fa5ed3bb1703b9238567b6ced6fd71a78a1aaf4.so
+Using #calcEntry at line 143 in file "/home/rzco/OpenFOAM/rzco-8/run/shyy/shyyValidation/system/blockMeshDict"
+Using #calcEntry at line 145 in file "/home/rzco/OpenFOAM/rzco-8/run/shyy/shyyValidation/system/blockMeshDict"
+Using #calcEntry at line 146 in file "/home/rzco/OpenFOAM/rzco-8/run/shyy/shyyValidation/system/blockMeshDict"
+Using #calcEntry at line 147 in file "/home/rzco/OpenFOAM/rzco-8/run/shyy/shyyValidation/system/blockMeshDict"
+Using #calcEntry at line 149 in file "/home/rzco/OpenFOAM/rzco-8/run/shyy/shyyValidation/system/blockMeshDict"
+Using #calcEntry at line 153 in file "/home/rzco/OpenFOAM/rzco-8/run/shyy/shyyValidation/system/blockMeshDict"
+Creating block edges
+No non-planar block faces defined
+Creating topology blocks
+Creating topology patches
+
+Creating block mesh topology
+
+Check topology
+
+	Basic statistics
+		Number of internal faces : 7
+		Number of boundary faces : 28
+		Number of defined boundary faces : 28
+		Number of undefined boundary faces : 0
+	Checking patch -> block consistency
+
+Creating block offsets
+Creating merge list .
+
+Creating polyMesh from blockMesh
+Creating patches
+Creating cells
+Creating points with scale 1
+    Block 0 cell size :
+        i : 3.66275e-05 .. 0.000584099
+        j : 6.66667e-06 .. 6.66667e-06
+        k : 0.05
+    Block 1 cell size :
+        i : 0.00053454 .. 0.00423468
+        j : 6.66667e-06 .. 6.66667e-06
+        k : 0.05
+    Block 2 cell size :
+        i : 0.00053454 .. 0.00423468
+        j : 9.21148e-06 .. 0.00622075
+        k : 0.05
+    Block 3 cell size :
+        i : 3.66275e-05 .. 0.000584099
+        j : 9.21148e-06 .. 0.00622075
+        k : 0.05
+    Block 4 cell size :
+        i : 0.000235865 .. 2.19897e-05
+        j : 9.21148e-06 .. 0.00622075
+        k : 0.05
+    Block 5 cell size :
+        i : 0.00432336 .. 0.000202765
+        j : 9.21148e-06 .. 0.00622075
+        k : 0.05
+    Block 6 cell size :
+        i : 0.00432336 .. 0.000202765
+        j : 6.66667e-06 .. 6.66667e-06
+        k : 0.05
+
+Writing polyMesh
+----------------
+Mesh Information
+----------------
+  boundingBox: (-0.015 0 0) (0.1 0.05 0.05)
+  nPoints: 15192
+  nCells: 7400
+  nFaces: 29795
+  nInternalFaces: 14605
+----------------
+Patches
+----------------
+  patch 0 (start: 14605 size: 115) name: top
+  patch 1 (start: 14720 size: 60) name: bottom
+  patch 2 (start: 14780 size: 65) name: inlet
+  patch 3 (start: 14845 size: 65) name: outlet
+  patch 4 (start: 14910 size: 35) name: exposed
+  patch 5 (start: 14945 size: 50) name: wallRhoC
+  patch 6 (start: 14995 size: 7400) name: back
+  patch 7 (start: 22395 size: 7400) name: front
+
+End
+

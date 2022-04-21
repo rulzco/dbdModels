@@ -1,0 +1,140 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  8
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 8-1c9b5879390b
+Exec   : blockMesh
+Date   : Apr 20 2022
+Time   : 20:24:55
+Host   : "LAPTOP-SOEGUO28"
+PID    : 5109
+I/O    : uncollated
+Case   : /home/rzco/OpenFOAM/rzco-8/run/kloker/kloker
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Creating block mesh from
+    "system/blockMeshDict"
+Using #calcEntry at line 115 in file "/home/rzco/OpenFOAM/rzco-8/run/kloker/kloker/system/blockMeshDict"
+Using #codeStream with "/home/rzco/OpenFOAM/rzco-8/run/kloker/kloker/dynamicCode/platforms/linux64GccDPInt32Opt/lib/libcodeStream_2b1dc1efaf2ff4dbf7ecd2a1aa1e9892d68b3a10.so"
+Creating new library in "dynamicCode/_2b1dc1efaf2ff4dbf7ecd2a1aa1e9892d68b3a10/platforms/linux64GccDPInt32Opt/lib/libcodeStream_2b1dc1efaf2ff4dbf7ecd2a1aa1e9892d68b3a10.so"
+Invoking "wmake -s libso /home/rzco/OpenFOAM/rzco-8/run/kloker/kloker/dynamicCode/_2b1dc1efaf2ff4dbf7ecd2a1aa1e9892d68b3a10"
+wmake libso /home/rzco/OpenFOAM/rzco-8/run/kloker/kloker/dynamicCode/_2b1dc1efaf2ff4dbf7ecd2a1aa1e9892d68b3a10
+    ln: ./lnInclude
+    wmkdep: codeStreamTemplate.C
+    Ctoo: codeStreamTemplate.C
+    ld: /home/rzco/OpenFOAM/rzco-8/run/kloker/kloker/dynamicCode/_2b1dc1efaf2ff4dbf7ecd2a1aa1e9892d68b3a10/../platforms/linux64GccDPInt32Opt/lib/libcodeStream_2b1dc1efaf2ff4dbf7ecd2a1aa1e9892d68b3a10.so
+Using #calcEntry at line 117 in file "/home/rzco/OpenFOAM/rzco-8/run/kloker/kloker/system/blockMeshDict"
+Using #calcEntry at line 126 in file "/home/rzco/OpenFOAM/rzco-8/run/kloker/kloker/system/blockMeshDict"
+Using #calcEntry at line 130 in file "/home/rzco/OpenFOAM/rzco-8/run/kloker/kloker/system/blockMeshDict"
+Using #codeStream with "/home/rzco/OpenFOAM/rzco-8/run/kloker/kloker/dynamicCode/platforms/linux64GccDPInt32Opt/lib/libcodeStream_9d4b7d5343d0ad25eaa64138db8334090d1fc813.so"
+Creating new library in "dynamicCode/_9d4b7d5343d0ad25eaa64138db8334090d1fc813/platforms/linux64GccDPInt32Opt/lib/libcodeStream_9d4b7d5343d0ad25eaa64138db8334090d1fc813.so"
+Invoking "wmake -s libso /home/rzco/OpenFOAM/rzco-8/run/kloker/kloker/dynamicCode/_9d4b7d5343d0ad25eaa64138db8334090d1fc813"
+wmake libso /home/rzco/OpenFOAM/rzco-8/run/kloker/kloker/dynamicCode/_9d4b7d5343d0ad25eaa64138db8334090d1fc813
+    ln: ./lnInclude
+    wmkdep: codeStreamTemplate.C
+    Ctoo: codeStreamTemplate.C
+    ld: /home/rzco/OpenFOAM/rzco-8/run/kloker/kloker/dynamicCode/_9d4b7d5343d0ad25eaa64138db8334090d1fc813/../platforms/linux64GccDPInt32Opt/lib/libcodeStream_9d4b7d5343d0ad25eaa64138db8334090d1fc813.so
+Using #calcEntry at line 131 in file "/home/rzco/OpenFOAM/rzco-8/run/kloker/kloker/system/blockMeshDict"
+Using #calcEntry at line 132 in file "/home/rzco/OpenFOAM/rzco-8/run/kloker/kloker/system/blockMeshDict"
+Using #calcEntry at line 134 in file "/home/rzco/OpenFOAM/rzco-8/run/kloker/kloker/system/blockMeshDict"
+Using #calcEntry at line 136 in file "/home/rzco/OpenFOAM/rzco-8/run/kloker/kloker/system/blockMeshDict"
+Using #calcEntry at line 138 in file "/home/rzco/OpenFOAM/rzco-8/run/kloker/kloker/system/blockMeshDict"
+Using #calcEntry at line 141 in file "/home/rzco/OpenFOAM/rzco-8/run/kloker/kloker/system/blockMeshDict"
+Using #codeStream with "/home/rzco/OpenFOAM/rzco-8/run/kloker/kloker/dynamicCode/platforms/linux64GccDPInt32Opt/lib/libcodeStream_8fa5ed3bb1703b9238567b6ced6fd71a78a1aaf4.so"
+Creating new library in "dynamicCode/_8fa5ed3bb1703b9238567b6ced6fd71a78a1aaf4/platforms/linux64GccDPInt32Opt/lib/libcodeStream_8fa5ed3bb1703b9238567b6ced6fd71a78a1aaf4.so"
+Invoking "wmake -s libso /home/rzco/OpenFOAM/rzco-8/run/kloker/kloker/dynamicCode/_8fa5ed3bb1703b9238567b6ced6fd71a78a1aaf4"
+wmake libso /home/rzco/OpenFOAM/rzco-8/run/kloker/kloker/dynamicCode/_8fa5ed3bb1703b9238567b6ced6fd71a78a1aaf4
+    ln: ./lnInclude
+    wmkdep: codeStreamTemplate.C
+    Ctoo: codeStreamTemplate.C
+    ld: /home/rzco/OpenFOAM/rzco-8/run/kloker/kloker/dynamicCode/_8fa5ed3bb1703b9238567b6ced6fd71a78a1aaf4/../platforms/linux64GccDPInt32Opt/lib/libcodeStream_8fa5ed3bb1703b9238567b6ced6fd71a78a1aaf4.so
+Using #calcEntry at line 143 in file "/home/rzco/OpenFOAM/rzco-8/run/kloker/kloker/system/blockMeshDict"
+Using #calcEntry at line 145 in file "/home/rzco/OpenFOAM/rzco-8/run/kloker/kloker/system/blockMeshDict"
+Using #calcEntry at line 146 in file "/home/rzco/OpenFOAM/rzco-8/run/kloker/kloker/system/blockMeshDict"
+Using #calcEntry at line 147 in file "/home/rzco/OpenFOAM/rzco-8/run/kloker/kloker/system/blockMeshDict"
+Using #calcEntry at line 149 in file "/home/rzco/OpenFOAM/rzco-8/run/kloker/kloker/system/blockMeshDict"
+Using #calcEntry at line 153 in file "/home/rzco/OpenFOAM/rzco-8/run/kloker/kloker/system/blockMeshDict"
+Creating block edges
+No non-planar block faces defined
+Creating topology blocks
+Creating topology patches
+
+Creating block mesh topology
+
+Check topology
+
+	Basic statistics
+		Number of internal faces : 7
+		Number of boundary faces : 28
+		Number of defined boundary faces : 28
+		Number of undefined boundary faces : 0
+	Checking patch -> block consistency
+
+Creating block offsets
+Creating merge list .
+
+Creating polyMesh from blockMesh
+Creating patches
+Creating cells
+Creating points with scale 1
+    Block 0 cell size :
+        i : 3.33334e-05 .. 0.000606209
+        j : 6.66667e-06 .. 6.66667e-06
+        k : 0.05
+    Block 1 cell size :
+        i : 0.00060665 .. 0.0263825
+        j : 6.66667e-06 .. 6.66667e-06
+        k : 0.05
+    Block 2 cell size :
+        i : 0.00060665 .. 0.0263825
+        j : 6.66667e-06 .. 0.00996672
+        k : 0.05
+    Block 3 cell size :
+        i : 3.33334e-05 .. 0.000606209
+        j : 6.66667e-06 .. 0.00996672
+        k : 0.05
+    Block 4 cell size :
+        i : 0.000606476 .. 3.32955e-05
+        j : 6.66667e-06 .. 0.00996672
+        k : 0.05
+    Block 5 cell size :
+        i : 0.00180246 .. 0.000606166
+        j : 6.66667e-06 .. 0.00996672
+        k : 0.05
+    Block 6 cell size :
+        i : 0.00180246 .. 0.000606166
+        j : 6.66667e-06 .. 6.66667e-06
+        k : 0.05
+
+Writing polyMesh
+----------------
+Mesh Information
+----------------
+  boundingBox: (-0.02 0 0) (0.7 0.14 0.05)
+  nPoints: 45318
+  nCells: 22331
+  nFaces: 89651
+  nInternalFaces: 44335
+----------------
+Patches
+----------------
+  patch 0 (start: 44335 size: 209) name: top
+  patch 1 (start: 44544 size: 109) name: wallBottom
+  patch 2 (start: 44653 size: 109) name: inlet
+  patch 3 (start: 44762 size: 109) name: outlet
+  patch 4 (start: 44871 size: 68) name: wallExposed
+  patch 5 (start: 44939 size: 50) name: wallRhoC
+  patch 6 (start: 44989 size: 22331) name: back
+  patch 7 (start: 67320 size: 22331) name: front
+
+End
+
